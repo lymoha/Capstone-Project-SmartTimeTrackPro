@@ -14,23 +14,23 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 
 class SmartServiceTest {
-private static SmartService smartService;
-
-private static SmartRepository mockSmartRepository;
-private static IdService mockIdService;
+private SmartRepository mockSmartRepository = mock(SmartRepository.class);
+private IdService mockIdService = mock(IdService.class);
 private static List<Employees> mockEmployeesList;
-@BeforeAll
+    private SmartService smartService = new SmartService(mockIdService, mockSmartRepository);
+
+    /* @BeforeAll
 
 static void setUp() {
-    mockSmartRepository = mock(SmartRepository.class);
-    mockIdService = mock(IdService.class);
-    smartService = new SmartService(mockIdService, mockSmartRepository);
+
     mockEmployeesList = new ArrayList<>(){{
         add(new Employees("1","Max",123));
         add(new Employees("2","Maxi",456));
         add(new Employees("3","maxim",789));
     }};
 }
+*/
+
     @Test
     void addEmployees_shouldCreateRandomId_WhenCalled() {
         // GIVEN
