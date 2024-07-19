@@ -34,13 +34,13 @@ static void setUp() {
     @Test
     void addEmployees_shouldCreateRandomId_WhenCalled() {
         // GIVEN
-        EmployeesData newDat = new EmployeesData("Max", 567);
-        Employees expected = new Employees("123", "Max", 567);
+        EmployeesData newData = new EmployeesData("Max", 567);
+        Employees expected = new Employees("1", "Max", 567);
 
         // WHEN & THEN
-        when(mockIdService.generateId()).thenReturn("123");
+        when(mockIdService.generateId()).thenReturn("1");
         when(mockSmartRepository.save(expected)).thenReturn(expected);
-        smartService.addEmployees(newDat);
+        smartService.addEmployees(newData);
         verify(mockSmartRepository).save(expected);
         verify(mockIdService).generateId();
     }
