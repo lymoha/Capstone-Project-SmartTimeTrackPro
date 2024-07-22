@@ -4,7 +4,6 @@ import capstoneproject.backend.exceptions.InvalidIdException;
 import capstoneproject.backend.model.Employees;
 import capstoneproject.backend.model.EmployeesData;
 import capstoneproject.backend.service.SmartService;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class SmartController {
     private final SmartService smartService;
@@ -33,11 +32,13 @@ public Employees addEmployees(@RequestBody EmployeesData employeesData){
     public Employees getEmployeesById(@PathVariable String id) throws InvalidIdException {
         return smartService.getEmployeesById(id);
     }
+
  @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{id}")
     public void deleteEmployeesById(@PathVariable String id) throws InvalidIdException {
     smartService.deleteEmployeesById(id);
  }
+
  @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/update/{id}")
     public Employees updateEmployees(@PathVariable String id, @RequestBody EmployeesData employeesData) throws InvalidIdException {

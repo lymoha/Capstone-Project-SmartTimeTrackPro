@@ -9,14 +9,15 @@ public class EmployeesData {
 
           private   String name;
           private   int employeeNr;
-         // private   String benutzername;
+        //  private int anzahlArbeitstage ;
+          //private Date arbeitsbeginn ;
+          //private Date arbeitsende;
+
+          //private   String benutzername;
           //private   String passwort;
-        //  private   String position;
-          //  String standort;
-           // String email;
-            //String telefonnummer;
-
-
-
+          //private   String position;
+          //String standort;
+          //String email;
+          //String telefonnummer;
 
 }
