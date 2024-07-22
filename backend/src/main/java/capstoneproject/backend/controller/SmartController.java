@@ -44,5 +44,14 @@ public Employees addEmployees(@RequestBody EmployeesData employeesData){
     public Employees updateEmployees(@PathVariable String id, @RequestBody EmployeesData employeesData) throws InvalidIdException {
     return smartService.updateEmployeesById(id, employeesData);
  }
-
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/add/{id}")
+    public String addWorkDayById(@RequestBody String id) throws InvalidIdException {
+    return smartService.addWorkDayById(id);
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{id}/{time}")
+public void getEndWorkDayById(@PathVariable String id, @PathVariable String time) throws InvalidIdException {
+    smartService.getEndWorkDayById(id, time);
+}
 }
