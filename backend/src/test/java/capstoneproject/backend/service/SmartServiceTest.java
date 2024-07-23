@@ -21,7 +21,7 @@ class SmartServiceTest {
     private final IdService mockIdService = mock(IdService.class);
     private static List<Employees> mockEmployeesList;
     private final SmartService smartService = new SmartService(mockIdService, mockSmartRepository);
-    //private List<Employees> employeesList;
+
      @BeforeAll
 
 static void setUp() {

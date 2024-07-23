@@ -12,7 +12,7 @@ public class TimeManager {
     private LocalDateTime startOfWork;
     private LocalDateTime endOfWork;
     private Duration numberOfHoursWorkedPerDay;
-
+private double hoursWorked;
     //private int anzahlArbeitstage ;
 
     //private   String benutzername;

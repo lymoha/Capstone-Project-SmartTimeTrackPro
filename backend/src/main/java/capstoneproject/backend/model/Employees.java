@@ -19,7 +19,7 @@ private List<TimeManager> timeManagers;
 
 public String addTimeManager(String id) {
 
-   TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, null);
+   TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, null,0.0);
 
    timeManagers.add(timeManager);
 return id;
@@ -29,7 +29,12 @@ public void endWorkDay(String id){
    for (TimeManager timeManager : timeManagers) {
       if(timeManager.getId().equals(id)) {
          timeManager.setEndOfWork(LocalDateTime.now());
-         timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartOfWork(), timeManager.getEndOfWork()));
+     //  timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartOfWork(), timeManager.getEndOfWork()));
+         Duration duration = Duration.between(timeManager.getStartOfWork(), timeManager.getEndOfWork());
+         timeManager.setNumberOfHoursWorkedPerDay(duration);
+
+         double hoursWorked = duration.toMinutes() / 60.0;
+         timeManager.setHoursWorked(Math.round(hoursWorked * 1000) /1000.0) ;
       }
 
    }
