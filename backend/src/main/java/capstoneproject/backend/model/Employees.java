@@ -28,8 +28,8 @@ public void endWorkDay(String id){
 
    for (TimeManager timeManager : timeManagers) {
       if(timeManager.getId().equals(id)) {
-         timeManager.setArbeitsende(LocalDateTime.now());
-         timeManager.setAnzahlGeleisteteArbeitsstundeTag(Duration.between(timeManager.getArbeitsbeginn(), timeManager.getArbeitsende()));
+         timeManager.setEndOfWork(LocalDateTime.now());
+         timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartOfWork(), timeManager.getEndOfWork()));
       }
 
    }

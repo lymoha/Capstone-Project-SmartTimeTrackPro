@@ -3,7 +3,9 @@ package capstoneproject.backend.service;
 import capstoneproject.backend.exceptions.InvalidIdException;
 import capstoneproject.backend.model.Employees;
 import capstoneproject.backend.model.EmployeesData;
+import capstoneproject.backend.model.TimeManager;
 import capstoneproject.backend.repository.SmartRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,20 +19,20 @@ import static org.mockito.Mockito.verify;
 class SmartServiceTest {
     private final SmartRepository mockSmartRepository = mock(SmartRepository.class);
     private final IdService mockIdService = mock(IdService.class);
-    private List<Employees> mockEmployeesList;
+    private static List<Employees> mockEmployeesList;
     private final SmartService smartService = new SmartService(mockIdService, mockSmartRepository);
-    private List<Employees> employeesList;
-    /* @BeforeAll
+    //private List<Employees> employeesList;
+     @BeforeAll
 
 static void setUp() {
 
     mockEmployeesList = new ArrayList<>(){{
-        add(new Employees("1","Max",123));
-        add(new Employees("2","Maxi",456));
-        add(new Employees("3","maxim",789));
+        add(new Employees("1","Max",123,new ArrayList<>()));
+        add(new Employees("2","Maxi",456,new ArrayList<>()));
+        add(new Employees("3","maxim",789,new ArrayList<>()));
     }};
 }
-*/
+
 
     @Test
     void addEmployees_shouldCreateRandomId_WhenCalled() {
@@ -66,11 +68,11 @@ static void setUp() {
         @Test
         void getAllEmployees_ShouldReturnAllEmployees_WhenEmployeesListIsCalled () {
             //WHEN
-            when(mockSmartRepository.findAll()).thenReturn(employeesList);
+            when(mockSmartRepository.findAll()).thenReturn(mockEmployeesList);
             List<Employees> actual = smartService.getAllEmployees();
             //THEN
             verify(mockSmartRepository).findAll();
-            assertEquals(employeesList, actual);
+            assertEquals(mockEmployeesList, actual);
         }
 
         @Test
@@ -93,11 +95,11 @@ static void setUp() {
     @Test
     void getEmployeesById_shouldReturnEmployee_WhenCalledWithAGivenId() throws InvalidIdException {
         //WHEN
-        when(mockSmartRepository.findById("1")).thenReturn(Optional.of(employeesList.get(1)));
+        when(mockSmartRepository.findById("1")).thenReturn(Optional.of(mockEmployeesList.get(1)));
         Employees actual = smartService.getEmployeesById("1");
         //THEN
         verify(mockSmartRepository).findById("1");
-        assertEquals(employeesList.get(1), actual);
+        assertEquals(mockEmployeesList.get(1), actual);
     }
 
     @Test
@@ -120,13 +122,13 @@ static void setUp() {
     @Test
     void updateEmployeesById_shouldReturnUpdatedEmployees_WhenCalledWithAGivenId() throws InvalidIdException {
         //WHEN
-        when(mockSmartRepository.findById("3")).thenReturn(Optional.of(employeesList.get(3)));
-        Employees actual = smartService.updateEmployeesById("3", new EmployeesData("Lukas Podolski", 456));
+        when(mockSmartRepository.findById("1")).thenReturn(Optional.of(mockEmployeesList.get(1)));
+        Employees actual = smartService.updateEmployeesById("1", new EmployeesData("Lukas Podolski", 456));
         when(mockSmartRepository.save(any(Employees.class))).thenReturn(actual);
         //THEN
-        verify(mockSmartRepository).findById("3");
+        verify(mockSmartRepository).findById("1");
         verify(mockSmartRepository).save(any(Employees.class));
-        assertNotEquals(employeesList.get(3), actual);
+        assertNotEquals(mockEmployeesList.get(1), actual);
     }
 
     @Test

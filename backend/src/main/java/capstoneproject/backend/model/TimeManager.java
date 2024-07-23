@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class TimeManager {
     private String id;
-    private LocalDateTime arbeitsbeginn ;
-    private LocalDateTime arbeitsende;
-    private Duration anzahlGeleisteteArbeitsstundeTag;
+    private LocalDateTime startOfWork;
+    private LocalDateTime endOfWork;
+    private Duration numberOfHoursWorkedPerDay;
 
     //private int anzahlArbeitstage ;
 

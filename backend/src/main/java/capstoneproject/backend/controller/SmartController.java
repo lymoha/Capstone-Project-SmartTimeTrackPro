@@ -46,7 +46,7 @@ public Employees addEmployees(@RequestBody EmployeesData employeesData){
  }
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add/{id}")
-    public String addWorkDayById(@RequestBody String id) throws InvalidIdException {
+    public String addWorkDayById(@PathVariable String id) throws InvalidIdException {
     return smartService.addWorkDayById(id);
     }
     @ResponseStatus(HttpStatus.OK)
