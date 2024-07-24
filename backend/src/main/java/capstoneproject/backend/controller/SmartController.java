@@ -50,8 +50,8 @@ public Employees addEmployees(@RequestBody EmployeesData employeesData){
     return smartService.addWorkDayById(id);
     }
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{id}/{time}")
-public void getEndWorkDayById(@PathVariable String id, @PathVariable String time) throws InvalidIdException {
-    smartService.getEndWorkDayById(id, time);
+    @GetMapping("/{id}/{timeOut}")
+public void getEndWorkDayById(@PathVariable String id, @PathVariable String timeOut) throws InvalidIdException {
+    smartService.getEndWorkDayById(id, timeOut);
 }
 }
