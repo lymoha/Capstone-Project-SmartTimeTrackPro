@@ -1,18 +1,19 @@
 import CheckIn from "../components/CheckIn.tsx";
-import {useState} from "react";
+import EmployeesForm from "../components/EmployeesForm.tsx";
 
+interface EmployeesDashboardProps {
+    onCheckIn: () => void
+    onCheckOut: () => void
+    startTime: string,
+    endTime: string,
+}
 
-export default function EmployeesDashboard(){
-    // @ts-ignore
-    const [id,setId] = useState<string>("aa9fe818-c6b2-4b54-8955-232eb6ed0a85");
-    const [idBill,setIdBill] = useState<string>("e556db83-4e52-45a7-ac0c-ddd0a778bd05");
-    return(
+export default function EmployeesDashboard(props: EmployeesDashboardProps) {
+
+    return (
         <>
-        <h1>Well come Check Norris</h1>
-            < CheckIn id={id}/>
-            <h1>Hallo Bill Gates</h1>
-            <CheckIn id={idBill}/>
-
+            < CheckIn onCheckIn={props.onCheckIn} onCheckOut={props.onCheckOut}/>
+            <EmployeesForm startTime={props.startTime} endTime={props.endTime}/>
         </>
     )
 }
