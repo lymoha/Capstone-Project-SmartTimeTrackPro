@@ -31,15 +31,27 @@ public class Employees {
         for (TimeManager timeManager : timeManagers) {
             if (timeManager.getId().equals(id)) {
                 timeManager.setEndTime(LocalDateTime.now());
-                timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartTime(), timeManager.getEndTime()));
-                //Duration duration = Duration.between(timeManager.getStartTime(), timeManager.getEndTime());
-                // timeManager.setNumberOfHoursWorkedPerDay(duration);
+                //timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartTime(), timeManager.getEndTime()));
+                Duration duration = Duration.between(timeManager.getStartTime(), timeManager.getEndTime());
+                timeManager.setNumberOfHoursWorkedPerDay(duration);
 
-                // double hoursWorked = duration.toMinutes() / 60.0;
-                // timeManager.setHoursWorked(Math.round(hoursWorked * 1000) /1000.0) ;
+                double hoursWorked = duration.toMinutes() / 60.0;
+                timeManager.setHoursWorked(Math.round(hoursWorked * 1000) / 1000.0);
             }
 
         }
+//        for (TimeManager timeManager : timeManagers) {
+//            if (timeManager.getId().equals(id)) {
+//                timeManager.setEndTime(LocalDateTime.now());
+//                timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartTime(), timeManager.getEndTime()));
+//                //Duration duration = Duration.between(timeManager.getStartTime(), timeManager.getEndTime());
+//                // timeManager.setNumberOfHoursWorkedPerDay(duration);
+//
+//                // double hoursWorked = duration.toMinutes() / 60.0;
+//                // timeManager.setHoursWorked(Math.round(hoursWorked * 1000) /1000.0) ;
+//            }
+//
+//        }
 
     }
 }

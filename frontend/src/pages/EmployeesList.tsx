@@ -10,7 +10,7 @@ export default function EmployeesList(props: Readonly<employeesTodoCardsProps>) 
         <div>
             {props.employees.map((employee) => (<p key={employee.id}>  {employee.name}</p>))}
 
-            {props.employees.map((empl) => (<p key={empl.id}>  {empl.name} {empl.id}</p>))
+            {props.employees.map((e) => (<p key={e.id}>  {e.name} {e.id}</p>))
             })
         </div>
     )
