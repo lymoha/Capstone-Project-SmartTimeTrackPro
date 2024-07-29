@@ -4,6 +4,8 @@ import "../styles/EmployeesForm.css"
 type EmployeesFormProps = {
     startTime: string,
     endTime: string,
+    hoursWorked:number
+    //getEmployeesTimeList:
 }
 export default function EmployeesForm(props: EmployeesFormProps) {
     const [name, setName] = useState('');
@@ -13,6 +15,7 @@ export default function EmployeesForm(props: EmployeesFormProps) {
         event.preventDefault()
         setName("")
         setEmployeeNr(0)
+
     }
 
     return (
@@ -28,6 +31,8 @@ export default function EmployeesForm(props: EmployeesFormProps) {
                 <label className={"employees-label-styler"}> Start in den Arbeitstag: {props.startTime}</label>
 
                 <label className={"employees-label-styler"}> Ende den Tag: {props.endTime}</label>
+
+                <label className={"employees-label-styler"}> Geleistete Arbeitsstunde: {props.hoursWorked}</label>
             </form>
 
         </>

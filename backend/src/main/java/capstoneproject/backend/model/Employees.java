@@ -21,7 +21,6 @@ public class Employees {
     public String addTimeManager(String id) {
 
         TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, null, 0.0);
-
         timeManagers.add(timeManager);
         return id;
     }

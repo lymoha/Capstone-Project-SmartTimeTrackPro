@@ -59,4 +59,10 @@ public class SmartController {
         return smartService.getEndWorkDayById(id, timeOut);
 
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/time-list")
+    public List<Employees> getEmployeesTimeList() throws InvalidIdException {
+        return smartService.getEmployeesTimeList();
+    }
 }

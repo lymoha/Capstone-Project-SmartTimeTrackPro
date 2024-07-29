@@ -10,9 +10,9 @@ function App() {
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [startTime, setStartTime] = useState<string>(" ");
     const [endTimeId, setEndTimeId] = useState<string>(" ");
-    const [id, setId] = useState<string>("06f342d0-49cd-46f7-972b-809bbc5658b8");
+    const [id, setId] = useState<string>("beeb9aa6-7b00-401c-b966-3426b9ae98d5");
     const [endTime, setEndTime] = useState<string>(" ");
-
+    const [hoursWorked, setHoursWorked] = useState(0.0);
     function onCheckIn() {
         axios.post(
             "/api/add/" + id
@@ -27,6 +27,7 @@ function App() {
         axios.get("/api/" + id + "/" + endTimeId)
             .then((response) => {
                 setEndTime(response.data.time)
+                setHoursWorked(response.data.hoursWorked)
                 //console.log(response.data)
             })
             .catch(error => console.error(error.message))
@@ -51,7 +52,7 @@ function App() {
         <>
             <RouterProvider router={router}/>
             <EmployeesDashboard onCheckIn={onCheckIn} onCheckOut={onCheckOut} startTime={startTime}
-                                endTime={endTime}/>
+                                endTime={endTime} hoursWorked={hoursWorked}/>
         </>
     )
 }

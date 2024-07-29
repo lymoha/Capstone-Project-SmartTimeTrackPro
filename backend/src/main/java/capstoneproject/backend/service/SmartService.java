@@ -1,9 +1,7 @@
 package capstoneproject.backend.service;
 
 import capstoneproject.backend.exceptions.InvalidIdException;
-import capstoneproject.backend.model.Employees;
-import capstoneproject.backend.model.EmployeesData;
-import capstoneproject.backend.model.TimeDto;
+import capstoneproject.backend.model.*;
 import capstoneproject.backend.repository.SmartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,7 +52,7 @@ public class SmartService {
 
         employees.addTimeManager(idLocal);
         smartRepository.save(employees);
-        return new TimeDto(idLocal, employees.getTimeManagers().getLast().getStartTime().toString());
+        return new TimeDto(idLocal, employees.getTimeManagers().getLast().getStartTime().toString(),0.0);
     }
 
     public TimeDto getEndWorkDayById(String id, String endTime) throws InvalidIdException {
@@ -62,6 +60,15 @@ public class SmartService {
         employees.endWorkDay(endTime);
 
         smartRepository.save(employees);
-        return new TimeDto(id, employees.getTimeManagers().getLast().getEndTime().toString());
+        return new TimeDto(id, employees.getTimeManagers().getLast().getEndTime().toString(),employees.getTimeManagers().getLast().getHoursWorked());
+    }
+    public List<Employees> getEmployeesTimeList() {
+        List<Employees> allEmployees = smartRepository.findAll();
+        List<EmployeesTimeInfos> employeesTimeInfosList = new ArrayList<>();
+        for(Employees employees: allEmployees) {
+            EmployeesTimeInfos employeeTimeInfo = new EmployeesTimeInfos(employees.getId(),employeesTimeInfosList.getLast().getHoursWorked());
+            employeesTimeInfosList.add(employeeTimeInfo);
+        }
+        return smartRepository.findAll();
     }
 }
