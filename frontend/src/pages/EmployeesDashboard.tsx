@@ -1,7 +1,5 @@
-import CheckIn from "../components/CheckIn.tsx";
-import EmployeesForm from "../components/EmployeesForm.tsx";
-
-interface EmployeesDashboardProps {
+import CheckInCheckOut from "../components/CheckInCheckOut.tsx";
+type EmployeesDashboardProps = {
     onCheckIn: () => void,
     onCheckOut: () => void,
     startTime: string,
@@ -13,8 +11,8 @@ export default function EmployeesDashboard(props: EmployeesDashboardProps) {
 
     return (
         <>
-            < CheckIn onCheckIn={props.onCheckIn} onCheckOut={props.onCheckOut}/>
-            <EmployeesForm startTime={props.startTime} endTime={props.endTime} hoursWorked={props.hoursWorked}/>
+            < CheckInCheckOut onCheckIn={props.onCheckIn} onCheckOut={props.onCheckOut}
+                             startTime={props.startTime} endTime={props.endTime} hoursWorked={props.hoursWorked}/>
         </>
     )
 }

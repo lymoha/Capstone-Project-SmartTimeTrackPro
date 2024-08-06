@@ -1,19 +1,26 @@
 import './App.css'
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import axios from "axios";
-import EmployeesList from "./pages/EmployeesList.tsx";
-import {Employee} from "./types/Employee.ts";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import EmployeesDashboard from "./pages/EmployeesDashboard.tsx";
+import './styles/CSS-Styler.css'
+import './styles/EmployeesForm.css'
+import {HomePage} from "./pages/HomePage.tsx";
+import {EmployeesProvider} from "./context/EmployeesContext.tsx";
+
+import AddPage from "./pages/AddPage.tsx";
+import DisplayEmployees from "./pages/DisplayEmployees.tsx";
+import TimeManager from "./pages/TimeManager.tsx";
+import UpdateEmployeesPage from "./pages/UpdateEmployeesPage.tsx";
 
 function App() {
-    const [employees, setEmployees] = useState<Employee[]>([]);
+
     const [startTime, setStartTime] = useState<string>(" ");
     const [endTimeId, setEndTimeId] = useState<string>(" ");
-    const [id, setId] = useState<string>("beeb9aa6-7b00-401c-b966-3426b9ae98d5");
+    const [id] = useState<string>("829cb1be-7442-4539-aa0e-eb491c4155d9");
     const [endTime, setEndTime] = useState<string>(" ");
     const [hoursWorked, setHoursWorked] = useState(0.0);
-    function onCheckIn() {
+
+    function onCheckIn(){
         axios.post(
             "/api/add/" + id
         ).then((response) => {
@@ -33,26 +40,37 @@ function App() {
             .catch(error => console.error(error.message))
     }
 
-    function getAllEmployees() {
-        axios.get("/api")
-            .then((response) => setEmployees(response.data))
-            .catch(error => console.log(error, "No employees"));
-    }
-
-    useEffect(() => {
-        getAllEmployees();
-    }, []);
+    /*
+     createBrowserRouter wird verwendet, um eine Routing-Konfiguration zu definieren, die festlegt, welche Komponenten unter welchen URL-Pfaden gerendert werden sollen.
+     --path: Der URL-Pfad, bei dem diese Route aktiv wird.
+     --element: Die Komponente, die für diesen Pfad gerendert werden soll.
+     */
     const router = createBrowserRouter([
         {
-            path: "/",
-            element: <EmployeesList employees={employees}/>
+            path:"/",
+            element:<HomePage />
+        },
+        {
+            path: "/add/",
+            element:<AddPage />
+        },
+        {
+            path:"/update-employees/",
+            element:<DisplayEmployees/>
+        },
+        {
+            path:"/timeManager/",
+            element:<TimeManager onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked}/>
+        },
+        {
+            path:"/update/:id",
+            element:<UpdateEmployeesPage/>
         }
     ])
     return (
         <>
-            <RouterProvider router={router}/>
-            <EmployeesDashboard onCheckIn={onCheckIn} onCheckOut={onCheckOut} startTime={startTime}
-                                endTime={endTime} hoursWorked={hoursWorked}/>
+            <EmployeesProvider> <RouterProvider router={router}/> </EmployeesProvider>
+
         </>
     )
 }

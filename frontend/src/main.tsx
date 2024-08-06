@@ -5,6 +5,6 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLFormElement).render(
     <React.StrictMode>
-        <App/>
+            <App/>
     </React.StrictMode>
 )

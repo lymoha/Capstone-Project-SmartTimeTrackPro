@@ -1,7 +1,7 @@
-import {Employee} from "../types/Employee.ts";
+import {Employees} from "../types/Employees.ts";
 
 type employeesTodoCardsProps = {
-    employees: Employee[]
+    employees: Employees[]
 }
 
 export default function EmployeesList(props: Readonly<employeesTodoCardsProps>) {

@@ -62,13 +62,5 @@ public class SmartService {
         smartRepository.save(employees);
         return new TimeDto(id, employees.getTimeManagers().getLast().getEndTime().toString(),employees.getTimeManagers().getLast().getHoursWorked());
     }
-    public List<Employees> getEmployeesTimeList() {
-        List<Employees> allEmployees = smartRepository.findAll();
-        List<EmployeesTimeInfos> employeesTimeInfosList = new ArrayList<>();
-        for(Employees employees: allEmployees) {
-            EmployeesTimeInfos employeeTimeInfo = new EmployeesTimeInfos(employees.getId(),employeesTimeInfosList.getLast().getHoursWorked());
-            employeesTimeInfosList.add(employeeTimeInfo);
-        }
-        return smartRepository.findAll();
-    }
+
 }
