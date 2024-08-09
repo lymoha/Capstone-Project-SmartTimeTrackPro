@@ -3,11 +3,15 @@ package capstoneproject.backend.service;
 import capstoneproject.backend.exceptions.InvalidIdException;
 import capstoneproject.backend.model.Employees;
 import capstoneproject.backend.model.EmployeesData;
+import capstoneproject.backend.model.TimeDto;
 import capstoneproject.backend.model.TimeManager;
 import capstoneproject.backend.repository.SmartRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,9 +34,9 @@ static void setUp() {
         add(new Employees("1","Max",123,new ArrayList<>()));
         add(new Employees("2","Maxi",456,new ArrayList<>()));
         add(new Employees("3","maxim",789,new ArrayList<>()));
+       // add(new Employees("1","Thomas",1234),new TimeManager("", LocalDateTime.now(),null,null,0.0 ))
     }};
 }
-
 
     @Test
     void addEmployees_shouldCreateRandomId_WhenCalled() {
@@ -91,7 +95,6 @@ static void setUp() {
             }
         }
 
-
     @Test
     void getEmployeesById_shouldReturnEmployee_WhenCalledWithAGivenId() throws InvalidIdException {
         //WHEN
@@ -138,4 +141,6 @@ static void setUp() {
         assertThrows(InvalidIdException.class, () -> smartService.updateEmployeesById("3", new EmployeesData("Lukas Podolski", 456)));
         verify(mockSmartRepository).findById("3");
     }
+
+
 }

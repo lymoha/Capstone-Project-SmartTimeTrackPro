@@ -6,6 +6,7 @@ import capstoneproject.backend.repository.SmartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,9 +48,9 @@ public class SmartService {
     }
 
     public TimeDto addWorkDayById(String id) throws InvalidIdException {
+
         Employees employees = smartRepository.findById(id).orElseThrow(() -> new InvalidIdException("No Employees with this Id " + id + " was found"));
         String idLocal = idService.generateId();
-
         employees.addTimeManager(idLocal);
         smartRepository.save(employees);
         return new TimeDto(idLocal, employees.getTimeManagers().getLast().getStartTime().toString(),0.0);
@@ -62,5 +63,6 @@ public class SmartService {
         smartRepository.save(employees);
         return new TimeDto(id, employees.getTimeManagers().getLast().getEndTime().toString(),employees.getTimeManagers().getLast().getHoursWorked());
     }
+
 
 }

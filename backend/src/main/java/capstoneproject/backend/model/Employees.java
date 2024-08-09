@@ -34,7 +34,7 @@ public class Employees {
                 timeManager.setNumberOfHoursWorkedPerDay(duration);
 
                 double hoursWorked = duration.toMinutes() / 60.0;
-                timeManager.setHoursWorked(Math.round(hoursWorked * 10000) / 10000.0);
+                timeManager.setHoursWorked(Math.round(hoursWorked * 100000) / 100000.0);
             }
         }
 

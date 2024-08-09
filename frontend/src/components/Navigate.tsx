@@ -4,18 +4,18 @@ export default function Navigate(){
 
     return (
         <>
-            <ul id={"navi"}>
-                <li id={"navi01"}>
-                    <Link to={"/"}> Hauptseite </Link>
+            <ul className={"navi"}>
+                <li className={"navi02"}>
+                    <Link to={"/"} className={"navi01"}> Hauptseite </Link>
                 </li>
-                <li id={"navi02"}>
-                    <Link to={"/add/"}>Elemente Hinzufügen</Link>
+                <li className={"navi02"}>
+                    <Link to={"/add/"} className={"navi01"}>Mitarbeiter Hinzufügen</Link>
                 </li>
-                <li id={"navi03"}>
-                    <Link to={"/update-employees/"}> Mitarbeiter Daten </Link>
+                <li className={"navi02"}>
+                    <Link to={"/update-employees/"} className={"navi01"}> Mitarbeiterdaten Bearbeiten </Link>
                 </li>
-                <li>
-                    <Link to={"/timeManager/"}> An-und Abmelden </Link>
+                <li className={"navi02"}>
+                    <Link to={"/timeManager/"} className={"navi01"}> An-und Abmelden </Link>
 
                 </li>
 

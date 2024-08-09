@@ -1,0 +1,23 @@
+.article-card-styler {
+    display: inline-block;
+    justify-content: space-between;
+    height: 130px;
+    background-color: lightblue;
+    width: 215px; /* 5 Elemente pro Reihe, minus Abstand */
+    /* Alternativ, ohne Abstand:
+    flex: 1 1 20%;
+    */
+    border: 1px solid black; /* Optional: Rand um die Elemente */
+    padding: 10px;
+    color: black;
+    border-radius: 8px;
+    text-align: center;
+    margin: 10px;
+
+}
+
+.divCardButtonStyler {
+    display: flex;
+    justify-content: space-between;
+
+}

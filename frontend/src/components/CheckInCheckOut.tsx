@@ -1,6 +1,8 @@
 import "./EmployeesForm.tsx"
-import '../styles/EmployeesForm.css'
 import {useNavigate} from "react-router-dom";
+import '../styles/Back-Button.css'
+import '../styles/CheckInCheckOut.css'
+
 
 type CheckInProps = {
     onCheckIn: () => void,
@@ -15,22 +17,24 @@ export default function CheckInCheckOut(props: Readonly<CheckInProps>) {
     return (
         <>
 
-            <div className="app-container">
-                <div className={"app-inner-container"}>
-                    <label className={"employees-label-styler"}>Melde dich vor der Arbeitsaufnahme bitte an: </label>
-                    <button onClick={props.onCheckIn}>Anmelden:</button>
-                    {props.startTime} Anmeldezeit
-                </div>
 
-                <div className={"app-inner-container"}>
-                    <label className={"employees-label-styler"}>Melde dich hier nach der Arbeitsaufnahme bitte
-                        ab: </label>
-                    <button onClick={props.onCheckOut}>Abmelden:</button>
-                    {props.endTime} Abmeldezeit
-                    <h4 className={"h4"}>{props.hoursWorked}h für heute geleistete Arbeitsstunde</h4>
-                </div>
+            <div className="div-container-styler">
+                <label>Anmeldung vor Arbeitsaufnahme: </label>
+                <button onClick={props.onCheckIn}>Anmelden:</button>
+                 {"Anmeldung erfolgte um: " + props.startTime}
             </div>
-           <button id={"back-button-styler"} onClick={()=> navigate("/")}> Zurück zur Hauptseite</button>
+
+            <div className="div-container-styler">
+                <label>Abmeldung nach Arbeitsaufnahme: </label>
+                <button onClick={props.onCheckOut}>Abmelden:</button>
+                  {"Abmeldung erfolgte um: " + props.endTime}
+            </div>
+
+            <div className="div-p-styler">
+                <p className={"p-styler"}>  {props.hoursWorked} für heute geleistete Arbeit in Stunden</p>
+            </div>
+
+            <button id={"back-button-styler"} onClick={() => navigate("/")}> Zurück zur Hauptseite</button>
 
 
         </>

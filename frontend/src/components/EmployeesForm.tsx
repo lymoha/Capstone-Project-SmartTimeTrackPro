@@ -40,6 +40,7 @@ export default function EmployeesForm() {
      }
         setName("")
         setEmployeeNr(0)
+
    console.log(location.pathname)
     }
     function handleCancel() {
@@ -47,24 +48,38 @@ export default function EmployeesForm() {
             navigate("/")
         } else if (location.pathname === ("/update/" + id)) {
             navigate("/update-employees/")
+        }else if (location.pathname===("/add/")) {
+                setName("")
+               setEmployeeNr(0)
         }
 
     }
-
     return (
         <>
-            <form className="employees-form-styler" onSubmit={event => handleSubmit(event)}>
-                <label className="employees-label-styler">Name:</label>
-                <input className="employees-input-styler" type="text" placeholder="Gib bitte deinen Namen ein"
+            <div className="employees-form-styler">
+            <form onSubmit={event => handleSubmit(event)}>
+                 <div className={"col-label-name"}>
+                <label htmlFor="label-name">Name:</label>
+                <input id="input-name" type="text" placeholder="Gib bitte deinen Namen ein"
                        onChange={e => setName(e.target.value)} value={name} required={true}/>
-                <label className="employees-label-styler">Personal-Nr.:</label>
-                <input className="employees-input-styler" type="text" placeholder="Gib bitte deine Personalnummer ein"
+                   </div>
+
+              <div className="row-personal-nr">
+
+                <label className="label-employeeNr">PersonalNr.:</label>
+                <input id="input-employeeNr" type="text" placeholder="Gib bitte deine Personalnummer ein"
                        onChange={e => setEmployeeNr(Number(e.target.value))} value={employeeNr} required={true}/>
-                <button type={"submit"}>OK</button>
-                <button type={"button"} onClick={handleCancel}>Abbrechen</button>
+              </div>
 
+                <div className="row-button-div">
+                    <button id={"button-ok"} type={"submit"}>OK</button>
+                </div>
+                <br/>
+                <div className={"row-button02-div"}>
+                <button id={"button-abbrechen"} type={"button"} onClick={handleCancel}>Abbrechen</button>
+                </div>
             </form>
-
+            </div>
         </>
     )
 }
