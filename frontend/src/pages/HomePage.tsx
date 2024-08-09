@@ -1,10 +1,17 @@
-import Header from "../components/Header.tsx";
 
-export function HomePage() {
+import '../styles/HomePage.css'
+import DisplayEmployees from "./DisplayEmployees.tsx";
+type HomePageProps = {
+    setId: (id: string) => void;
+
+}
+export function HomePage(props:Readonly< HomePageProps>): JSX.Element {
 
     return (
         <>
-            <Header/>
+          <div className="home-page">
+          <DisplayEmployees setId={props.setId}/>
+          </div>
         </>
     )
 }

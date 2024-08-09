@@ -59,4 +59,5 @@ public class SmartController {
         return smartService.getEndWorkDayById(id, timeOut);
 
     }
+
 }

@@ -1,25 +1,65 @@
-.employees-form-styler {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 125px;
 
-    width: 200px; /* 5 Elemente pro Reihe, minus Abstand */
-    /* Alternativ, ohne Abstand:
-    flex: 1 1 20%;
-    */
-    border: 1px solid #ccc; /* Optional: Rand um die Elemente */
-    padding: 10px;
-    background-color: white;
-    color: black;
-    border-radius: 10px;
-    text-align: center;
-    gap: 8px;
+.employees-form-styler{
+    border-radius: 5px;
+    background-color: lightblue;
+    padding: 20px;
+    width: 800px;
+    height: 270px;
+    margin: 10px auto;
 }
+.col-label-name{
+    float: left;
+    width: 25%;
+    margin-top: 15px;
+}
+.label-employeeNr{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+margin-top: 15px;
+}
+#input-name{
+    width: 125px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+#input-employeeNr{
+    width: 120px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 
-.employees-input-styler {
+}
+.row-button-div{
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100px;
+    margin-top: 50px;
+    margin-right: 10px;
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
 
+}
+.row-button02-div
+{
+    text-align: center;
+    background-color:darkseagreen;
+    color: white;
+    padding: 12px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+ width: 100px;
+
+}
+#button-ok{
+  width: 100px;
+}
+#button-abbrechen{
+    width: 100px;
 }

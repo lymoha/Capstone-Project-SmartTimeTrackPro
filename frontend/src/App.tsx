@@ -2,7 +2,7 @@ import './App.css'
 import {useState} from "react";
 import axios from "axios";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import './styles/CSS-Styler.css'
+
 import './styles/EmployeesForm.css'
 import {HomePage} from "./pages/HomePage.tsx";
 import {EmployeesProvider} from "./context/EmployeesContext.tsx";
@@ -16,7 +16,8 @@ function App() {
 
     const [startTime, setStartTime] = useState<string>(" ");
     const [endTimeId, setEndTimeId] = useState<string>(" ");
-    const [id] = useState<string>("829cb1be-7442-4539-aa0e-eb491c4155d9");
+    const [id,setId] = useState<string>("");
+
     const [endTime, setEndTime] = useState<string>(" ");
     const [hoursWorked, setHoursWorked] = useState(0.0);
 
@@ -48,7 +49,7 @@ function App() {
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<HomePage />
+            element:<HomePage setId={setId}/>
         },
         {
             path: "/add/",
@@ -56,7 +57,7 @@ function App() {
         },
         {
             path:"/update-employees/",
-            element:<DisplayEmployees/>
+            element:<DisplayEmployees setId={setId}/>
         },
         {
             path:"/timeManager/",
@@ -69,6 +70,7 @@ function App() {
     ])
     return (
         <>
+
             <EmployeesProvider> <RouterProvider router={router}/> </EmployeesProvider>
 
         </>

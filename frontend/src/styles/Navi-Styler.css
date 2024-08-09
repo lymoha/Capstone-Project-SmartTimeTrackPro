@@ -1,43 +1,39 @@
 
+.navi{
 
-#navi li{
-    display: inline;
-    list-style-type: none;
-
-    background-color: #F7FFC3;        /* Hintergrundfarbe für die Navigation */
-    padding: 4px 0;                   /* Innenabstand: oben/unten 4px, li/re 0 */
-    border-top: 2px solid black;    /* Rahmenlinie oben */
-    border-bottom: 2px solid black; /* Rahmenlinie unten */
-   border-right: 2px solid black;
-    border-left: 2px solid black;
-    margin-right: 15px;                        /* Keinen Außenabstand */
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+font-size: 20px;
+    gap: 2em;
+    padding: 10px;
+    margin-top: 70px;
+    background-color: ivory;
 }
-
-#navi01 {
-    a:link { background-color: thistle }
-    a:hover { background-color: pink }
-    a:active { background-color: gold }
-    a:visited:hover{background-color:gray;color:#F7FFC3 }
-    a:focus { background-color: aquamarine; color: white }
+.navi02{
+    list-style: none;
+    a:hover {background-color: pink;}
+    a:focus { background-color: aquamarine;}
+    a:focus-visible{background-color: aquamarine;}
+    background-color: antiquewhite;
 }
-#navi02{
-    a:link { background-color: thistle }
-    a:hover { background-color: pink }
-    a:active { background-color: gold }
-    a:focus { background-color: aquamarine }
-    a:visited:hover{background-color:gray }
+.navi01 {
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 12px;
+    &:focus-visible, &:active {background-color: aquamarine;}
+    &:hover {background-color: pink;}
+    &:focus { background-color: aquamarine;}
 }
-#navi03{
-    a:link { background-color: thistle }
-    a:hover { background-color: #F7FFC3 }
-    a:active { background-color: deepskyblue }
-    a:focus { background-color: aquamarine }
-    a:visited:hover{background-color:gray }
+/*
+.navi01:active {
+    background-color: yellow;
 }
-#navi04{
-    a:link { background-color: thistle }
-    a:hover { background-color: pink }
-    a:focus { background-color: aquamarine }
-    a:visited:hover{background-color:gray }
+.navi02:focus {
+    background-color: yellow;
 }
+.navi:focus{
+    background-color: yellow;
+}
+ */

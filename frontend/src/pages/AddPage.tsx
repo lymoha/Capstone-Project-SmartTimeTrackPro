@@ -1,6 +1,7 @@
 import Header from "../components/Header.tsx";
 import EmployeesForm from "../components/EmployeesForm.tsx";
 import {useNavigate} from "react-router-dom";
+import '../styles/Back-Button.css'
 
 export default function AddPage() {
 const navigate = useNavigate();

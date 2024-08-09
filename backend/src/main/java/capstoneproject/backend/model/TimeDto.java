@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TimeDto {
+public class TimeDto{
     String id;
     String time;
     double hoursWorked;

@@ -3,7 +3,6 @@ import {FC, ReactNode, useEffect, useState} from "react";
 import axios from "axios";
 import {EmployeesContext} from "../hooks/useEmployeesContext.ts";
 
-
 export type EmployeesContextType = {
     employees: Employees[];
     getAllEmployees: () => void;
@@ -14,12 +13,11 @@ export type EmployeesContextType = {
     getEndWorkDayById: (id: string,timeOut:string) => void;
     getEmployeesById: (id: string) => void;
     employee:Employees;
-}
 
+}
     export const EmployeesProvider: FC<{ children: ReactNode }> = ({children}) => {
         const [employee, setEmployee]=useState<Employees>({name:"",employeeNr:0,id:""})
         const [employees, setEmployees] = useState<Employees[]>([])
-
         const addEmployees = (newEmployees: EmployeesData) => {
             axios.post("/api/add", newEmployees)
                 .then(getAllEmployees)
