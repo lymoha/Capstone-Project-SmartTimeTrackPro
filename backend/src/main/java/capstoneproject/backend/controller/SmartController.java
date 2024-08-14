@@ -7,9 +7,12 @@ import capstoneproject.backend.model.TimeDto;
 import capstoneproject.backend.service.SmartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -59,5 +62,17 @@ public class SmartController {
         return smartService.getEndWorkDayById(id, timeOut);
 
     }
+   @ResponseStatus(HttpStatus.OK)
+   @GetMapping("/hoursPerMonth/{id}")
+    public double getHoursWorkedPerMonthById(@PathVariable String id) throws InvalidIdException {
+        return smartService.getHoursWorkedPerMonthById(id);
+   }
+   @ResponseStatus(HttpStatus.OK)
+   @GetMapping("/search")
+   public List<Employees> searchEmployees(@RequestParam("query") String query) {
+       return smartService.searchEmployees((query));
+   }
+
+
 
 }

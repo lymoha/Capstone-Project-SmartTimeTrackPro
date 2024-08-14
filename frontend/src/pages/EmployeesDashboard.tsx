@@ -5,6 +5,7 @@ type EmployeesDashboardProps = {
     startTime: string,
     endTime: string,
     hoursWorked: number
+    hoursWorkedPerMonth: number;
 }
 
 export default function EmployeesDashboard(props: EmployeesDashboardProps) {
@@ -12,7 +13,7 @@ export default function EmployeesDashboard(props: EmployeesDashboardProps) {
     return (
         <>
             < CheckInCheckOut onCheckIn={props.onCheckIn} onCheckOut={props.onCheckOut}
-                             startTime={props.startTime} endTime={props.endTime} hoursWorked={props.hoursWorked}/>
+                             startTime={props.startTime} endTime={props.endTime} hoursWorked={props.hoursWorked} hoursWorkedPerMonth={props.hoursWorkedPerMonth}/>
         </>
     )
 }

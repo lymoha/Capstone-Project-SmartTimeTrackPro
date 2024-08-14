@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +15,7 @@ public class TimeManager {
     private LocalDateTime endTime;
     private Duration numberOfHoursWorkedPerDay;
     private double hoursWorked;
-    //private int anzahlArbeitstage ;
+    private Month workMonths;
 
     //private   String benutzername;
     //private   String passwort;

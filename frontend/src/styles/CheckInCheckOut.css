@@ -6,13 +6,11 @@
     display: flex;
     flex-direction: row;
    margin-bottom: 20px;
+    margin-top: 15px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     gap: 10px;
-
-}
-.div-container-styler:hover{
-    background-color: aquamarine;
+    height: 80px;
 }
 .div-container-styler button,label{
 justify-content: space-between;
@@ -20,7 +18,7 @@ justify-content: space-between;
     gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-
+    margin-top: 10px;
 
 }
 .div-p-styler{
@@ -30,10 +28,35 @@ justify-content: space-between;
     background-color: #cccccc;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    gap: 10px;
+    height: 80px;
+    margin-top: 10px;
 
 }
-.div-p-styler p{
+.div-sum-styler{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    background-color: cornsilk;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    gap: 10px;
+    margin-bottom: 10px;
+    height: 80px;
 
+}
 
+.div-container-styler:hover{
+    background-color: aquamarine;
+}
+.div-p-styler:hover{
+    background-color: lightblue;
+}
+.div-sum-styler:hover{
+    background-color: burlywood;
+}
+.l{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: blueviolet;
 }

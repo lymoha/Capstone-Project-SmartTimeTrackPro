@@ -20,6 +20,7 @@ function App() {
 
     const [endTime, setEndTime] = useState<string>(" ");
     const [hoursWorked, setHoursWorked] = useState(0.0);
+    const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState("");
 
     function onCheckIn(){
         axios.post(
@@ -49,7 +50,7 @@ function App() {
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<HomePage setId={setId}/>
+            element:<HomePage setId={setId} setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
         },
         {
             path: "/add/",
@@ -57,21 +58,30 @@ function App() {
         },
         {
             path:"/update-employees/",
-            element:<DisplayEmployees setId={setId}/>
+            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
         },
         {
             path:"/timeManager/",
-            element:<TimeManager onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked}/>
+            element:<TimeManager id={id} onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked} setEndTime={setEndTime} setStartTime={setStartTime}  hoursWorkedPerMonth={hoursWorkedPerMonth} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
         },
         {
             path:"/update/:id",
             element:<UpdateEmployeesPage/>
+        },
+        {
+            path:"/id/hoursPerMonth/",
+            element:<DisplayEmployees setId={setId}   setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
+        },
+        {
+            path:"/{id}/{timeOut}",
+            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
         }
     ])
     return (
         <>
 
             <EmployeesProvider> <RouterProvider router={router}/> </EmployeesProvider>
+
 
         </>
     )

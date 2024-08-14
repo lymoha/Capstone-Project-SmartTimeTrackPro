@@ -9,5 +9,5 @@ public class TimeDto{
     String id;
     String time;
     double hoursWorked;
-  ;
+    double hoursWorkedPerMonth;
 }

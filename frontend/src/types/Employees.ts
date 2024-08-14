@@ -13,5 +13,6 @@ export type TimeManager = {
     startTime: string,
     endTime: string,
     hoursWorked: number,
-    numberOfHoursWorkedPerDay: Date
+    numberOfHoursWorkedPerDay: Date,
+    hoursWorkedPerMonth: number
 }

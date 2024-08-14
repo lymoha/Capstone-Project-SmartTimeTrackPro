@@ -18,14 +18,14 @@ export default function UpdateEmployeesForm(props: Readonly<EmployeesUpdateFormP
 
         updateEmployees({name:name, employeeNr:employeeNr},props.id);
         navigate("/update-employees");
-    }useEffect(()=> {
+    }
+
+    useEffect(()=> {
         console.log("props.id" + props.name)
         console.log("props.employeeNr"+ props.employeeNr);
         console.log("state.name" + name)
         console.log("state.employeeNr" + employeeNr)
     })
-
-
 
     return(
         <>

@@ -6,6 +6,7 @@ import '../styles/E-Card.css'
 type EmployeesCardProps = {
     employee:Employees;
     setId:(id:string) => void;
+
 }
 export default function EmployeesCard(props:Readonly<EmployeesCardProps>) {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ return (
             <div className="divCardButtonStyler">
                 {
               location.pathname===("/")?
-            <button type={"button"} onClick={handleLogin}> LogIn</button>:
+            <button type={"button"} onClick={handleLogin}>TimeLogInLogOut</button>:
             <>
             <button type={"button"} onClick={handleDelete}> Löschen</button>
             <button type={"button"} onClick={handleEdit}>Bearbeiten</button>

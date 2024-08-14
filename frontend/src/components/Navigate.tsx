@@ -14,10 +14,7 @@ export default function Navigate(){
                 <li className={"navi02"}>
                     <Link to={"/update-employees/"} className={"navi01"}> Mitarbeiterdaten Bearbeiten </Link>
                 </li>
-                <li className={"navi02"}>
-                    <Link to={"/timeManager/"} className={"navi01"}> An-und Abmelden </Link>
 
-                </li>
 
             </ul>
         </>
