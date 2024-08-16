@@ -1,23 +1,34 @@
 
-.navi{
+.App{
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-font-size: 20px;
-    gap: 2em;
-    padding: 10px;
-    margin-top: 70px;
+    font-size: 20px;
+    text-align: center;
     background-color: ivory;
+
 }
-.navi02{
+#navi02{
+    display: inline-block;
     list-style: none;
     a:hover {background-color: pink;}
     a:focus { background-color: aquamarine;}
     a:focus-visible{background-color: aquamarine;}
     background-color: antiquewhite;
+
+    justify-content: center;
+    &:focus-visible, &:active {background-color: aquamarine;}
+    &:hover {background-color: pink;}
+    &:focus { background-color: aquamarine;}
+   margin-left: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 12px;
+
 }
 .navi01 {
+    display: inline-block;
     box-sizing: border-box;
     border: 1px solid black;
     border-radius: 10px;
@@ -26,14 +37,11 @@ font-size: 20px;
     &:hover {background-color: pink;}
     &:focus { background-color: aquamarine;}
 }
-/*
-.navi01:active {
-    background-color: yellow;
-}
-.navi02:focus {
+
+
+#navi02:focus {
     background-color: yellow;
 }
 .navi:focus{
     background-color: yellow;
 }
- */

@@ -21,7 +21,7 @@ public class Employees {
     private List<TimeManager> timeManagers;
     public String addTimeManager(String id) {
 
-        TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, null, 0.0,LocalDateTime.now().getMonth());
+        TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, null, 0.0,LocalDateTime.now().getMonth(),0.0);
         timeManagers.add(timeManager);
         return id;
     }
@@ -51,7 +51,12 @@ public class Employees {
         for (TimeManager timeManager : timeManagers) {
             if (timeManager.getWorkMonths().equals(currentMonth)) {
                 hoursWorkedPerMonth += timeManager.getHoursWorked();
-               roundMe = Math.round(hoursWorkedPerMonth * 100000) / 100000.0;
+                //System.out.println(hoursWorkedPerMonth);
+                roundMe = Math.round(hoursWorkedPerMonth * 100000) / 100000.0;
+                //System.out.println(roundMe);
+                timeManager.setHoursWorkedPerMonth(roundMe);
+
+
             }
         }
         return roundMe;
@@ -126,6 +131,8 @@ public class Employees {
 //            return hoursPerMonth;
 
         }
+
+
      }
 
 

@@ -1,6 +1,6 @@
 import CheckInCheckOut from "../components/CheckInCheckOut.tsx";
 import Header from "../components/Header.tsx";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useEmployeesContext} from "../hooks/useEmployeesContext.ts";
 
 type LoginLogOutTimeManagerProps = {
@@ -17,7 +17,7 @@ type LoginLogOutTimeManagerProps = {
 
 }
 export default function TimeManager(props:Readonly<LoginLogOutTimeManagerProps>) {
-const {getHoursWorkedPerMonthById,hoursWorkedPerMonth} = useEmployeesContext();
+const {getHoursWorkedPerMonthById} = useEmployeesContext();
 
 useEffect(() => {
     getHoursWorkedPerMonthById(props.id)},
@@ -25,7 +25,8 @@ useEffect(() => {
     return(
         <>
             <Header/>
-        <CheckInCheckOut onCheckIn={props.onCheckIn} onCheckOut={props.onCheckOut} startTime={props.startTime} endTime={props.endTime} hoursWorked={props.hoursWorked} hoursWorkedPerMonth={hoursWorkedPerMonth} setEndTime={props.setEndTime} setStartTime={props.setStartTime} setHoursWorkedPerMonth={props.setHoursWorkedPerMonth}/>
+
+        <CheckInCheckOut onCheckIn={props.onCheckIn} onCheckOut={props.onCheckOut} startTime={props.startTime} endTime={props.endTime} hoursWorked={props.hoursWorked} setEndTime={props.setEndTime} setStartTime={props.setStartTime} setHoursWorkedPerMonth={props.setHoursWorkedPerMonth} hoursWorkedPerMonth={props.hoursWorkedPerMonth}/>
 
         </>
     )

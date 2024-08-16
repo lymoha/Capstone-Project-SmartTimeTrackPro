@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import '../styles/Back-Button.css'
 import React, {useState} from "react";
 import {FaSearch} from "react-icons/fa";
+import '../styles/Header.css'
+import '../styles/DisplayEmployees.css'
 type DisplayEmployeesPageProps = {
     setId: (id: string) => void;
     setHoursWorkedPerMonth: (hoursWorkedPerMonth: number) => void;
@@ -24,15 +26,13 @@ export default function DisplayEmployees(props:Readonly<DisplayEmployeesPageProp
     return (
         <>
             <Header/>
-            <div>
-                <FaSearch className="search-icon-styler"/>
-            </div>
-            <div>
-                <input className={"div-container-styler"}
-                       type="text"
-                       value={query}
-                       onChange={(e) => setQuery(e.target.value)}
-                       placeholder="Tippe zum Suchen ..."/>
+            <div className={"div-search-container-styler"}>
+                <FaSearch id ="search-icon-styler"/>
+                <input
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Tippe zum Suchen ..."/>
             </div>
             {filteredList.map(employee => {
                 return (

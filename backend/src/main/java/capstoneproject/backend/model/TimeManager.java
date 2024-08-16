@@ -10,12 +10,15 @@ import java.time.Month;
 @Data
 @AllArgsConstructor
 public class TimeManager {
-    private String id;
+   private String id;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private Duration numberOfHoursWorkedPerDay;
+   private Duration numberOfHoursWorkedPerDay;
     private double hoursWorked;
     private Month workMonths;
+    private double hoursWorkedPerMonth;
+
+
 
     //private   String benutzername;
     //private   String passwort;

@@ -1,5 +1,9 @@
 
 .home-page{
+    display: inline-block;
+
     background-color: silver;
     width: 100%;
+    margin-bottom: 20px;
+
 }

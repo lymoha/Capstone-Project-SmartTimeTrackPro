@@ -1,5 +1,5 @@
 import {Employees, EmployeesData} from "../types/Employees.ts";
-import {FC, ReactNode, useEffect, useState} from "react";
+import React, {FC, ReactNode, useEffect, useState} from "react";
 import axios from "axios";
 import {EmployeesContext} from "../hooks/useEmployeesContext.ts";
 
@@ -14,14 +14,15 @@ export type EmployeesContextType = {
     getEmployeesById: (id: string) => void;
     employee:Employees;
     getHoursWorkedPerMonthById: (id: string) => void;
-    hoursWorkedPerMonth:number;
+    hoursWorkedPerMonth: string;
     searchEmployees: (query:string) => void;
-    setHoursWorkedPerMonth: (hoursWorked: number) => void;
+    setHoursWorkedPerMonth:  React.Dispatch<React.SetStateAction<string>>
+
 }
     export const EmployeesProvider: FC<{ children: ReactNode }> = ({children}) => {
-        const [employee, setEmployee]=useState<Employees>({name:"",employeeNr:0,id:""})
+        const [employee, setEmployee]=useState<Employees>({timeManagers: [], name:"",employeeNr:0,id:""})
         const [employees, setEmployees] = useState<Employees[]>([])
-        const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState<number>(0.0)
+        const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState<string>("")
         const addEmployees = (newEmployees: EmployeesData) => {
             axios.post("/api/add", newEmployees)
                 .then(getAllEmployees)
@@ -68,9 +69,9 @@ export type EmployeesContextType = {
                 .catch(error => console.error("No such data found",error))
         }
         const getHoursWorkedPerMonthById = (id:string) =>{
-            axios.get("/api/hoursPerMonth/" + id)
+            axios.get("/api/hoursPerMonth/id" + id)
                 .then(response =>setHoursWorkedPerMonth(response.data))
-                .catch(error => console.error("No such worked hours found",error))
+                .catch(error => console.error("No such worked hours found in getHoursWorkedPerMonthById",error))
         }
         const searchEmployees = (query:string)=>{
             axios.get("/api/search" + query)

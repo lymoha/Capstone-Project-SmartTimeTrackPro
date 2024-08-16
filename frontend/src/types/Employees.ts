@@ -2,6 +2,7 @@ export type Employees = {
     id: string,
     name: string,
     employeeNr: number
+    timeManagers: TimeManager[]
 }
 
 export type EmployeesData = {
@@ -15,4 +16,5 @@ export type TimeManager = {
     hoursWorked: number,
     numberOfHoursWorkedPerDay: Date,
     hoursWorkedPerMonth: number
+
 }

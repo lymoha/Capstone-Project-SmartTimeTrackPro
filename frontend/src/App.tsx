@@ -5,12 +5,12 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import './styles/EmployeesForm.css'
 import {HomePage} from "./pages/HomePage.tsx";
-import {EmployeesProvider} from "./context/EmployeesContext.tsx";
 
 import AddPage from "./pages/AddPage.tsx";
 import DisplayEmployees from "./pages/DisplayEmployees.tsx";
 import TimeManager from "./pages/TimeManager.tsx";
 import UpdateEmployeesPage from "./pages/UpdateEmployeesPage.tsx";
+import {useEmployeesContext} from "./hooks/useEmployeesContext.ts";
 
 function App() {
 
@@ -20,8 +20,8 @@ function App() {
 
     const [endTime, setEndTime] = useState<string>(" ");
     const [hoursWorked, setHoursWorked] = useState(0.0);
-    const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState("");
-
+    //const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState(0.0);
+    const {hoursWorkedPerMonth,setHoursWorkedPerMonth} = useEmployeesContext();
     function onCheckIn(){
         axios.post(
             "/api/add/" + id
@@ -42,15 +42,11 @@ function App() {
             .catch(error => console.error(error.message))
     }
 
-    /*
-     createBrowserRouter wird verwendet, um eine Routing-Konfiguration zu definieren, die festlegt, welche Komponenten unter welchen URL-Pfaden gerendert werden sollen.
-     --path: Der URL-Pfad, bei dem diese Route aktiv wird.
-     --element: Die Komponente, die für diesen Pfad gerendert werden soll.
-     */
+
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<HomePage setId={setId} setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            element:<HomePage setId={setId} setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
         },
         {
             path: "/add/",
@@ -58,29 +54,29 @@ function App() {
         },
         {
             path:"/update-employees/",
-            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorkedPerMonth} setStartTime={setStartTime} setEndTime={setEndTime}/>
         },
         {
             path:"/timeManager/",
-            element:<TimeManager id={id} onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked} setEndTime={setEndTime} setStartTime={setStartTime}  hoursWorkedPerMonth={hoursWorkedPerMonth} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
+            element:<TimeManager id={id} onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked} setEndTime={setEndTime} setStartTime={setStartTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth} hoursWorkedPerMonth={hoursWorkedPerMonth}/>
         },
         {
             path:"/update/:id",
             element:<UpdateEmployeesPage/>
         },
         {
-            path:"/id/hoursPerMonth/",
-            element:<DisplayEmployees setId={setId}   setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            path:"/hoursPerMonth/id/",
+            element:<DisplayEmployees setId={setId}   setHoursWorkedPerMonth={setHoursWorkedPerMonth} setStartTime={setStartTime} setEndTime={setEndTime}/>
         },
         {
             path:"/{id}/{timeOut}",
-            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorked} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorkedPerMonth} setStartTime={setStartTime} setEndTime={setEndTime}/>
         }
     ])
     return (
         <>
 
-            <EmployeesProvider> <RouterProvider router={router}/> </EmployeesProvider>
+            <RouterProvider router={router}/>
 
 
         </>

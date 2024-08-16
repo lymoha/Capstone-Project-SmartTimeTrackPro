@@ -1,4 +1,10 @@
 
+.header-styler{
+    display: inline-block;
+    margin: 0px;
+
+}
+
 .title-styler-h1{
     font-family: Arial, Helvetica, sans-serif;
     color: blue;
