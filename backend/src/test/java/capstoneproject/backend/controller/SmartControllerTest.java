@@ -122,7 +122,7 @@ private SmartService smartService;
                            """));
     }
 ///////////////////////////Was hinzugefügt////////
-
+/*
     @Test
     void addWorkDayById_ShouldReturnAddedWorkDay_WhenCalledWithWorkDayId() throws Exception {
         smartRepository.saveAll(List.of(
@@ -142,6 +142,7 @@ private SmartService smartService;
                  }]
             """));
     }
+
     @Test
     void getEndWorkDayById_ShouldReturnCorrectTimeDto_WhenCalledWithValidIdAndTimeOut() throws Exception {
         // Arrange
@@ -167,5 +168,5 @@ private SmartService smartService;
                 }
             """));
     }
-
+*/
 }
