@@ -7,7 +7,8 @@ type HomePageProps = {
     setId: (id: string) => void;
     setStartTime: React.Dispatch<React.SetStateAction<string>>;
     setEndTime: React.Dispatch<React.SetStateAction<string>>;
-    setHoursWorkedPerMonth: React.Dispatch<React.SetStateAction<string>>;
+    //setHoursWorkedPerMonth: React.Dispatch<React.SetStateAction<string>>;
+    setHoursWorkedPerMonth: number;// React.Dispatch<React.SetStateAction<string>>;
 }
 
 export function HomePage(props:Readonly< HomePageProps>): JSX.Element {
@@ -16,7 +17,7 @@ export function HomePage(props:Readonly< HomePageProps>): JSX.Element {
         <>
             <div className="home-page">
                 <DisplayEmployees setId={props.setId} 
-                                  setEndTime={props.setEndTime} setStartTime={props.setStartTime} setHoursWorkedPerMonth={props.setHoursWorkedPerMonth}/>
+                setEndTime={props.setEndTime} setStartTime={props.setStartTime}  setHoursWorkedPerMonth={hoursWorkedPerMonth => hoursWorkedPerMonth}/>
             </div>
 
         </>

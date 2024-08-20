@@ -21,7 +21,7 @@ public class Employees {
     private List<TimeManager> timeManagers;
     public String addTimeManager(String id) {
 
-        TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, null, 0.0,LocalDateTime.now().getMonth(),0.0);
+        TimeManager timeManager = new TimeManager(id, LocalDateTime.now(), null, 0.0, 0.0,LocalDateTime.now().getMonth(),0.0);
         timeManagers.add(timeManager);
         return id;
     }
@@ -32,12 +32,12 @@ public class Employees {
             if (timeManager.getId().equals(id)) {
                 timeManager.setEndTime(LocalDateTime.now());
 
-                //timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartTime(), timeManager.getEndTime()));
+                //timeManager.setNumberOfHoursWorkedPerDay(Duration.between(timeManager.getStartTime(), timeManager.getEndTime()));//Geht auch!!
                 Duration duration = Duration.between(timeManager.getStartTime(), timeManager.getEndTime());
-                timeManager.setNumberOfHoursWorkedPerDay(duration);
+                timeManager.setNumberOfHoursWorkedPerDay(duration.toSeconds());
 
-                double hoursWorked = duration.toMinutes() / 60.0;
-                timeManager.setHoursWorked(Math.round(hoursWorked * 100000) / 100000.0);
+                double hoursWorked = duration.toSeconds();
+                timeManager.setHoursWorked(hoursWorked);
             }
         }
 
@@ -46,89 +46,22 @@ public class Employees {
 
         // Finde die gesamte Arbeitszeit für den angegebenen Mitarbeiter und den aktuellen Monat
         Month currentMonth = LocalDateTime.now().getMonth();
-         double roundMe = 0.0;
+
         double hoursWorkedPerMonth = 0.0;
         for (TimeManager timeManager : timeManagers) {
             if (timeManager.getWorkMonths().equals(currentMonth)) {
                 hoursWorkedPerMonth += timeManager.getHoursWorked();
-                //System.out.println(hoursWorkedPerMonth);
-                roundMe = Math.round(hoursWorkedPerMonth * 100000) / 100000.0;
+               // System.out.println(hoursWorkedPerMonth);
+               // roundMe += Math.round(hoursWorkedPerMonth * 1000) / 1000.0;
                 //System.out.println(roundMe);
-                timeManager.setHoursWorkedPerMonth(roundMe);
+               // roundMe++;//führt zur Erhöhung bei, wo es nicht sein sollte!
+                //timeManager.setHoursWorkedPerMonth(roundMe);
+              // System.out.println(roundMe);
 
 
             }
         }
-        return roundMe;
-//        double hoursWorkedPerMonth = 0;
-//        for (TimeManager timeManager : timeManagers) {
-//            if (timeManager.getId().equals(id) && timeManager.getWorkMonths().toString().contains(currentMonth.toString())) {
-//              hoursWorkedPerMonth +=  timeManager.setHoursWorked(timeManager.getHoursWorked() + 1);
-//
-//            }
-//
-//        }
-//
-//       return getTimeManagers().getLast().getHoursWorked();
-
-//        Month currentMonth = LocalDateTime.now().getMonth();
-//        AtomicReference<Double> hoursPerMonth = new AtomicReference<>(0.0);
-//        for (TimeManager timeManager : timeManagers) {
-//
-//            // Vergleiche den Monatsnamen und gib die Summe der Gesamtarbeitsstunden je Monat zurückgeben
-//            if (currentMonth == Month.JANUARY) {
-//            timeManagers.stream()
-//                    .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                    .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.FEBRUARY) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.MARCH) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.APRIL) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.MAY) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.JUNE) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.JULY) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//
-//            } else if (currentMonth == Month.AUGUST) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getWorkMonths().equals(currentMonth))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double) (v + timeManager1.getHoursWorked())));
-//
-//            } else if (currentMonth == Month.SEPTEMBER) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.OCTOBER) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.NOVEMBER) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            } else if (currentMonth == Month.DECEMBER) {
-//                timeManagers.stream()
-//                        .filter(timeManager1 -> timeManager1.getId().equals(id))
-//                        .forEach(timeManager1 -> hoursPerMonth.updateAndGet(v -> (double)(v + timeManager1.getHoursWorked())));
-//            }
-//        }
-//            return hoursPerMonth;
+        return hoursWorkedPerMonth;
 
         }
 

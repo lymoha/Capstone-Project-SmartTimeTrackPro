@@ -14,6 +14,7 @@ export default function Header(){
           <nav>
              <Navigate/>
           </nav>
+
         </>
     )
 }

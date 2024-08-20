@@ -58,18 +58,19 @@ export default function EmployeesForm() {
         <>
             <div className="employees-form-styler">
             <form onSubmit={event => handleSubmit(event)}>
-                 <div className={"col-label-name"}>
-                <label htmlFor="label-name">Name:</label>
-                <input id="input-name" type="text" placeholder="Gib bitte deinen Namen ein"
+                 <div className={"div-name"}>
+                     <label className={"label-name"}>Name:</label>
+                <input className={"input-name"} type="text" placeholder="Gib bitte deinen Namen ein"
                        onChange={e => setName(e.target.value)} value={name} required={true}/>
-                   </div>
+                </div>
 
-              <div className="row-personal-nr">
-
+                 <div className={"div-personalNr"}>
                 <label className="label-employeeNr">PersonalNr.:</label>
-                <input id="input-employeeNr" type="text" placeholder="Gib bitte deine Personalnummer ein"
+                <input className="input-employeeNr" type="text" placeholder="Gib bitte deine Personalnummer ein"
                        onChange={e => setEmployeeNr(Number(e.target.value))} value={employeeNr} required={true}/>
-              </div>
+                 </div>
+
+                 <br/><br/>
 
                 <div className="row-button-div">
                     <button id={"button-ok"} type={"submit"}>OK</button>

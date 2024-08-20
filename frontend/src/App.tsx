@@ -37,6 +37,7 @@ function App() {
             .then((response) => {
                 setEndTime(response.data.time)
                 setHoursWorked(response.data.hoursWorked)
+                setHoursWorkedPerMonth(response.data.hoursWorkedPerMonth)
                 //console.log(response.data)
             })
             .catch(error => console.error(error.message))
@@ -46,7 +47,8 @@ function App() {
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<HomePage setId={setId} setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
+            element:<HomePage setId={setId} setStartTime={setStartTime} setEndTime={setEndTime}
+                              setHoursWorkedPerMonth={0} />
         },
         {
             path: "/add/",
@@ -54,7 +56,7 @@ function App() {
         },
         {
             path:"/update-employees/",
-            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorkedPerMonth} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            element:<DisplayEmployees setId={setId} setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorked}/>
         },
         {
             path:"/timeManager/",
@@ -66,11 +68,11 @@ function App() {
         },
         {
             path:"/hoursPerMonth/id/",
-            element:<DisplayEmployees setId={setId}   setHoursWorkedPerMonth={setHoursWorkedPerMonth} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            element:<DisplayEmployees setId={setId}  setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
         },
         {
             path:"/{id}/{timeOut}",
-            element:<DisplayEmployees setId={setId} setHoursWorkedPerMonth={setHoursWorkedPerMonth} setStartTime={setStartTime} setEndTime={setEndTime}/>
+            element:<DisplayEmployees setId={setId}  setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
         }
     ])
     return (

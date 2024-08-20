@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,32 +48,60 @@ public class SmartService {
         );
         return smartRepository.save(findEmployees);
     }
-
+/*LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatterEigene = DateTimeFormatter.ofPattern("EEEE MMMM.yyyy HH:mm:ss");
+        String formattedDateTime = now.format(formatterEigene);
+ */
     public TimeDto addWorkDayById(String id) throws InvalidIdException {
 
         Employees employees = smartRepository.findById(id).orElseThrow(() -> new InvalidIdException("No Employees with this Id in addWorkDayById-backend" + id + " was found"));
         String idLocal = idService.generateId();
+        /*
+  ///***
+        //LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = employees.getTimeManagers().getLast().getStartTime();
+
+        DateTimeFormatter formatterEigene = DateTimeFormatter.ofPattern("EEEE MMMM.yyyy HH:mm:ss");
+        String formattedDateTime = now.format(DateTimeFormatter.ofPattern(formatterEigene.toString()));
+///*****
+  */
         employees.addTimeManager(idLocal);
         smartRepository.save(employees);
         return new TimeDto(idLocal, employees.getTimeManagers().getLast().getStartTime().toString(),0.0,employees.hoursWorkedPerMonth());
+       // return new TimeDto(idLocal, formattedDateTime,0.0,employees.hoursWorkedPerMonth());
     }
 
     public TimeDto getEndWorkDayById(String id, String endTime) throws InvalidIdException {
         Employees employees = smartRepository.findById(id).orElseThrow(() -> new InvalidIdException("No Employees with this Id in getEndWorkDayById-backend" + id + " was found"));
         employees.endWorkDay(endTime);
 
-        smartRepository.save(employees);
-        return new TimeDto(id, employees.getTimeManagers().getLast().getEndTime().toString(),employees.getTimeManagers().getLast().getHoursWorked(),employees.hoursWorkedPerMonth());
+       Employees updatedEmployees = smartRepository.save(employees);
+
+       // employees.getTimeManagers().getLast().setHoursWorkedPerMonth(getHoursWorkedPerMonthById(id));
+        //smartRepository.save(employees);
+/*
+        //&&&&
+        LocalDateTime now = employees.getTimeManagers().getLast().getEndTime();
+
+        DateTimeFormatter formatterEigene = DateTimeFormatter.ofPattern("EEEE MMMM.yyyy HH:mm:ss");
+        String formattedDateTime = now.format(DateTimeFormatter.ofPattern(formatterEigene.toString()));
+//&&&&&
+
+ */
+        return new TimeDto(id, updatedEmployees.getTimeManagers().getLast().getEndTime().toString(),updatedEmployees.getTimeManagers().getLast().getHoursWorked(),updatedEmployees.hoursWorkedPerMonth());
+        //return new TimeDto(id,formattedDateTime ,employees.getTimeManagers().getLast().getHoursWorked(),employees.hoursWorkedPerMonth());
     }
    public double getHoursWorkedPerMonthById(String id) throws InvalidIdException {
+       //double result = 0.0;
         Employees employee = smartRepository.findById(id).orElseThrow(()-> new InvalidIdException("No Employees with this Id in getHoursWorkedPerMonthById-backend" + id + " was found"));
-        double result = employee.hoursWorkedPerMonth();
-        employee.getTimeManagers().getLast().setHoursWorkedPerMonth(result);
-       //smartRepository.save(employee);//16.08.2024 added line
-        //return employees.hoursWorkedPerMonth();//16.08.2024
 
-       return employee.hoursWorkedPerMonth();
-       //return employee.hoursWorkedPerMonth();//16.08.2024
+        //result +=employee.getTimeManagers().getLast().getHoursWorked();
+        //employee.getTimeManagers().getLast().setHoursWorkedPerMonth(result);
+
+       //smartRepository.save(employee);//16.08.2024 added line
+
+      return employee.hoursWorkedPerMonth();//16.08.2024
+
    }
 
     public List<Employees> searchEmployees(String query) {

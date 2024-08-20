@@ -4,7 +4,7 @@ export default function Navigate(){
 
     return (
         <>
-            <div className="App">
+            <div className="app">
             <ul className={"navi"}>
                 <li id ={"navi02"}>
                     <Link to={"/"} className={"navi01"}> Hauptseite </Link>

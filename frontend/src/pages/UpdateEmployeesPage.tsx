@@ -11,8 +11,9 @@ export default function UpdateEmployeesPage() {
         const {employee,getEmployeesById}= useEmployeesContext();
 
         useEffect (()=> {
+
             getEmployeesById(id)
-        },[]);
+        },[id]);
     return(
         <>
         <Navigate/>

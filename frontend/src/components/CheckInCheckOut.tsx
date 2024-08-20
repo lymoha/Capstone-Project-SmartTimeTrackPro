@@ -6,33 +6,35 @@ import React, {useEffect} from "react";
 import {useEmployeesContext} from "../hooks/useEmployeesContext.ts";
 import {format} from "date-fns";
 
-
 type CheckInProps = {
     onCheckIn: () => void,
     onCheckOut: () => void,
+    navigateBack:()=> void,
     startTime: string,
     endTime: string,
     hoursWorked: number,
-    hoursWorkedPerMonth: string,
+    hoursWorkedPerMonth: number,
+    name:string,
+    employeeNr:number
     setStartTime: React.Dispatch<React.SetStateAction<string>>,
     setEndTime: React.Dispatch<React.SetStateAction<string>>,
-   setHoursWorkedPerMonth: React.Dispatch<React.SetStateAction<string>>
+    setHoursWorkedPerMonth: React.Dispatch<React.SetStateAction<number>>
+    setName: React.Dispatch<React.SetStateAction<string>>,
+    setEmployeeNr: React.Dispatch<React.SetStateAction<number>>
 
 }
 
 export default function CheckInCheckOut(props: Readonly<CheckInProps>) {
     const navigate = useNavigate();
-    const {hoursWorkedPerMonth, setHoursWorkedPerMonth} = useEmployeesContext();
-
+    const {hoursWorkedPerMonth} = useEmployeesContext();
     function navigateBack() {
         props.setStartTime("");
         props.setEndTime("");
-        setHoursWorkedPerMonth("");
+        props.setHoursWorkedPerMonth(0.0);
 
         navigate("/");
     }
 
-    //<button onClick={props.onSumHoursWorkedOfTheMonth}>Anzahl Stunden Monat </button>
     useEffect(() => {
         console.log(hoursWorkedPerMonth)
     }, [])
@@ -40,29 +42,30 @@ export default function CheckInCheckOut(props: Readonly<CheckInProps>) {
         <>
             <div className="div-container-styler">
                 <label>Anmeldung vor Arbeitsaufnahme: </label>
-                <button onClick={props.onCheckIn}>Anmelden:</button>
-                {"Anmeldung erfolgte um: " + props.startTime}
+                <button id={"button-styler-an"} onClick={props.onCheckIn}>Anmelden:</button>
+                {props.startTime}
             </div>
 
             <div className="div-container-styler">
-                <label>Abmeldung nach Arbeitsaufnahme: </label>
-                <button onClick={props.onCheckOut}>Abmelden:</button>
-                {"Abmeldung erfolgte um: " + props.endTime}
+                <label>Abmeldung nach Arbeitsende: </label>
+                <button id={"button-styler-ab"} onClick={props.onCheckOut}>Abmelden:</button>
+
+                {props.endTime}
             </div>
 
             <div className="div-p-styler">
                 <p className={"p-styler"}>
-                    <label>Deine für heute geleistete Arbeit in Stunden: {props.hoursWorked}</label></p>
+                    <label>Deine für heute geleistete Arbeit in Stunden: {props.hoursWorked}s</label></p>
             </div>
 
             <div className="div-p-styler">
                 <p className={"p-m-styler"}>
                     <label className={"l"}>Geleistete Arbeitsstunden für den
-                        Monat {"\"" + format(new Date(), 'MMMM') + "\""} : {hoursWorkedPerMonth}</label></p>
+                        Monat {"'" + format(new Date(), 'MMMM') + "'"} : {hoursWorkedPerMonth}s</label></p>
             </div>
 
+            <button id={"back-button-styler"} onClick={navigateBack}>Zurück</button>
 
-            <button id={"back-button-styler"} onClick={navigateBack}> Zurück zur Hauptseite</button>
 
         </>
     )

@@ -14,15 +14,15 @@ export type EmployeesContextType = {
     getEmployeesById: (id: string) => void;
     employee:Employees;
     getHoursWorkedPerMonthById: (id: string) => void;
-    hoursWorkedPerMonth: string;
+    hoursWorkedPerMonth: number;
     searchEmployees: (query:string) => void;
-    setHoursWorkedPerMonth:  React.Dispatch<React.SetStateAction<string>>
+    setHoursWorkedPerMonth:  React.Dispatch<React.SetStateAction<number>>
 
 }
     export const EmployeesProvider: FC<{ children: ReactNode }> = ({children}) => {
         const [employee, setEmployee]=useState<Employees>({timeManagers: [], name:"",employeeNr:0,id:""})
         const [employees, setEmployees] = useState<Employees[]>([])
-        const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState<string>("")
+       const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState<number>(0.0)
         const addEmployees = (newEmployees: EmployeesData) => {
             axios.post("/api/add", newEmployees)
                 .then(getAllEmployees)
@@ -55,6 +55,7 @@ export type EmployeesContextType = {
                 }).catch(error => console.error("Something went wrong",error))
       }
       const getEndWorkDayById = (id:string,timeOut:string)=>{
+            //axios.get("/id/timeOut" + id + timeOut)
             axios.get("/id/timeOut" + id + timeOut)
                 .then(response =>{
                     setEmployees(response.data)
@@ -69,7 +70,8 @@ export type EmployeesContextType = {
                 .catch(error => console.error("No such data found",error))
         }
         const getHoursWorkedPerMonthById = (id:string) =>{
-            axios.get("/api/hoursPerMonth/id" + id)
+           // axios.get("/api/hoursPerMonth/id" + id)
+            axios.get("/api/hoursPerMonth/" + id)
                 .then(response =>setHoursWorkedPerMonth(response.data))
                 .catch(error => console.error("No such worked hours found in getHoursWorkedPerMonthById",error))
         }
@@ -81,12 +83,13 @@ export type EmployeesContextType = {
         useEffect(() => {
             getAllEmployees();
 
-
         }, []);
 
         return (
             <>
-            <EmployeesContext.Provider value = {{employees,getAllEmployees,updateEmployees, addEmployees, deleteEmployeesById, addWorkDayById,getEndWorkDayById,getEmployeesById,employee,getHoursWorkedPerMonthById,hoursWorkedPerMonth,searchEmployees,setHoursWorkedPerMonth}}>
+            <EmployeesContext.Provider value = {{employees,getAllEmployees,updateEmployees, addEmployees,
+                deleteEmployeesById, addWorkDayById,getEndWorkDayById,getEmployeesById,employee,
+                getHoursWorkedPerMonthById,searchEmployees,hoursWorkedPerMonth,setHoursWorkedPerMonth}}>
                 {children}
             </EmployeesContext.Provider>
 

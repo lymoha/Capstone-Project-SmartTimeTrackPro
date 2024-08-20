@@ -13,12 +13,10 @@ public class TimeManager {
    private String id;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-   private Duration numberOfHoursWorkedPerDay;
+   private double numberOfHoursWorkedPerDay;
     private double hoursWorked;
     private Month workMonths;
-    private double hoursWorkedPerMonth;
-
-
+    private Double hoursWorkedPerMonth;
 
     //private   String benutzername;
     //private   String passwort;

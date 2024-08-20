@@ -1,44 +1,33 @@
 
-.App{
+.app{
 
     display: flex;
     flex-direction: row;
     font-size: 20px;
     text-align: center;
-    background-color: ivory;
+    background-color: yellow;
+
 
 }
 #navi02{
     display: inline-block;
     list-style: none;
-    a:hover {background-color: pink;}
-    a:focus { background-color: aquamarine;}
-    a:focus-visible{background-color: aquamarine;}
-    background-color: antiquewhite;
-
+    margin-left: 50px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border: 2px solid #646cff;
+    border-radius: 10px;
+    padding: 12px;
     justify-content: center;
+
     &:focus-visible, &:active {background-color: aquamarine;}
     &:hover {background-color: pink;}
     &:focus { background-color: aquamarine;}
-   margin-left: 50px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 12px;
+    a:focus { background-color: orange;}
+    a:focus-visible{background-color: aquamarine;}
+    background-color: lightyellow;
 
 }
-.navi01 {
-    display: inline-block;
-    box-sizing: border-box;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 12px;
-    &:focus-visible, &:active {background-color: aquamarine;}
-    &:hover {background-color: pink;}
-    &:focus { background-color: aquamarine;}
-}
-
-
 #navi02:focus {
     background-color: yellow;
 }

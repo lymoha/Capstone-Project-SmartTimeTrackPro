@@ -10,10 +10,10 @@ type LoginLogOutTimeManagerProps = {
     startTime:string;
     endTime:string;
     hoursWorked:number;
-    hoursWorkedPerMonth:string;
+    hoursWorkedPerMonth:number;
     setEndTime: React.Dispatch<React.SetStateAction<string>>;
     setStartTime: React.Dispatch<React.SetStateAction<string>>;
-    setHoursWorkedPerMonth: React.Dispatch<React.SetStateAction<string>>;
+    setHoursWorkedPerMonth: React.Dispatch<React.SetStateAction<number>>;
 
 }
 export default function TimeManager(props:Readonly<LoginLogOutTimeManagerProps>) {

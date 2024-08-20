@@ -5,8 +5,10 @@ import {useNavigate} from "react-router-dom";
 import '../styles/Back-Button.css'
 import React, {useState} from "react";
 import {FaSearch} from "react-icons/fa";
-import '../styles/Header.css'
+//import '../styles/Header.css'
 import '../styles/DisplayEmployees.css'
+import '../styles/SearchBar.css'
+
 type DisplayEmployeesPageProps = {
     setId: (id: string) => void;
     setHoursWorkedPerMonth: (hoursWorkedPerMonth: number) => void;
@@ -22,27 +24,25 @@ export default function DisplayEmployees(props:Readonly<DisplayEmployeesPageProp
     const filteredList = query?
         employees.filter((employee) => employee.name.toLowerCase().includes(query.toLowerCase()) ):employees;
 
-
     return (
         <>
             <Header/>
-            <div className={"div-search-container-styler"}>
-                <FaSearch id ="search-icon-styler"/>
+
+            <div className={"input-wrapper"}>
+                <FaSearch id={"search-icon"}/>
                 <input
-                    type="text"
+                    type="text" name="search" placeholder="Tippe zum Suchen ..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Tippe zum Suchen ..."/>
+                />
+
             </div>
             {filteredList.map(employee => {
                 return (
                     <EmployeesCard key={employee.id} employee={employee} setId={props.setId}/>
                 );
             })}
-
-
-            <button id={"back-button-styler"} onClick={() => navigate("/")}>Zurück zur Hauptseite</button>
-
+            <button id={"back-button-styler"} onClick={() => navigate("/")}>Zurück</button>
         </>
     )
 }

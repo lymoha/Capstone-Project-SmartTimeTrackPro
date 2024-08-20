@@ -30,7 +30,7 @@ return (
         <article className="article-card-styler">
             <p>{"Name: " + props.employee.name}; {"PersonalNr:" + props.employee.employeeNr}</p>
             <div className="divCardButtonStyler">
-                {
+            {
               location.pathname===("/")?
             <button type={"button"} onClick={handleLogin}>TimeLogInLogOut</button>:
             <>

@@ -1,36 +1,54 @@
 
 .employees-form-styler{
-    border-radius: 5px;
-    background-color: lightblue;
-    padding: 20px;
-    width: 800px;
-    height: 270px;
-    margin: 10px auto;
+    width: 100%;
+    background-color: silver;
+    margin: 10px;
 }
-.col-label-name{
+.label-name{
+    background-color: #646cff;
+   display:flex;
+    flex-direction: row;
     float: left;
-    width: 25%;
+    width: 100px;
+    height: 50px;
     margin-top: 15px;
+    color: aliceblue;
 }
+.input-name{
+    background-color: #f9f9f9;
+    display:flex;
+    flex-direction: row;
+    float: left;
+    width: 220px;
+    height: 47px;
+    margin-top: 15px;
+    margin-left: 15px;
+color: black;
+}
+.div-personalNr{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    float: right;
+    margin-right: 100px;
+}
+
+.input-employeeNr{
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
 .label-employeeNr{
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-margin-top: 15px;
-}
-#input-name{
-    width: 125px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
-#input-employeeNr{
-    width: 120px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: lightblue;
+    width: 150px;
+    height: 50px;
+    margin-top: 15px;
 
 }
+
 .row-button-div{
     background-color: #04AA6D;
     color: white;
@@ -45,6 +63,7 @@ margin-top: 15px;
     display: flex;
 
 }
+
 .row-button02-div
 {
     text-align: center;
@@ -54,7 +73,7 @@ margin-top: 15px;
     border: 1px solid black;
     border-radius: 4px;
     cursor: pointer;
- width: 100px;
+    width: 100px;
 
 }
 #button-ok{

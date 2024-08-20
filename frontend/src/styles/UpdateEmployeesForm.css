@@ -1,1 +1,40 @@
 
+.div-styler{
+    width: 100%;
+    background-color: silver;
+    height: 300px;
+    margin: 10px;
+}
+#label-styler{
+    background-color: #04AA6D;
+    float: left;
+    width: 100px;
+    height: 50px;
+    margin-top: 15px;
+    color: aliceblue;
+}
+#input-styler{
+    background-color: #dddddd;
+    float: left;
+    width: 200px;
+    height: 47px;
+    margin-top: 15px;
+    margin-left: 15px;
+    color: black;
+}
+#button-styler:hover{
+    background-color: lightblue;
+}
+#button-styler{
+  width: 120px;
+  height: 50px;
+}
+.button-div{
+    background-color: #646cff;
+    padding: 12px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+
+}
