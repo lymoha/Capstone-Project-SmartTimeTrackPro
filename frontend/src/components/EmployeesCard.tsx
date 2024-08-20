@@ -7,6 +7,7 @@ type EmployeesCardProps = {
     employee:Employees;
     setId:(id:string) => void;
 
+
 }
 export default function EmployeesCard(props:Readonly<EmployeesCardProps>) {
     const navigate = useNavigate();
