@@ -3,10 +3,10 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useEmployeesContext} from "../hooks/useEmployeesContext.ts";
 import '../styles/E-Card.css'
 
+
 type EmployeesCardProps = {
     employee:Employees;
     setId:(id:string) => void;
-
 
 }
 export default function EmployeesCard(props:Readonly<EmployeesCardProps>) {
