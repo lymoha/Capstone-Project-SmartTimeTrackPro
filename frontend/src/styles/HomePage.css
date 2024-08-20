@@ -1,5 +1,11 @@
 
 .home-page{
-    background-color: silver;
+    display: inline-block;
+    background-color: #dddddd;
     width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+
+
+
 }

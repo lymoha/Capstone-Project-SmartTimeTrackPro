@@ -10,7 +10,7 @@ const navigate = useNavigate();
         <Header/>
         <EmployeesForm />
 
-            <button id={"back-button-styler"} onClick={()=>navigate("/")}>Zurück zur Hauptseite</button>
+            <button id={"back-button-styler"} onClick={()=>navigate("/")}>Zurück</button>
         </>
     )
 }

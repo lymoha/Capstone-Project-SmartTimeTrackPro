@@ -10,9 +10,11 @@ export default function Header(){
               <h2 id="title-styler-h2">Software zur Verwaltung von Personal- und
                   Arbeitszeitdaten</h2>
           </div>
+
           <nav>
              <Navigate/>
           </nav>
+
         </>
     )
 }

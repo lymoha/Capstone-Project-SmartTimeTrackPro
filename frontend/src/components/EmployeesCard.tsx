@@ -3,9 +3,11 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useEmployeesContext} from "../hooks/useEmployeesContext.ts";
 import '../styles/E-Card.css'
 
+
 type EmployeesCardProps = {
     employee:Employees;
     setId:(id:string) => void;
+
 }
 export default function EmployeesCard(props:Readonly<EmployeesCardProps>) {
     const navigate = useNavigate();
@@ -29,9 +31,9 @@ return (
         <article className="article-card-styler">
             <p>{"Name: " + props.employee.name}; {"PersonalNr:" + props.employee.employeeNr}</p>
             <div className="divCardButtonStyler">
-                {
+            {
               location.pathname===("/")?
-            <button type={"button"} onClick={handleLogin}> LogIn</button>:
+            <button type={"button"} onClick={handleLogin}>TimeLogInLogOut</button>:
             <>
             <button type={"button"} onClick={handleDelete}> Löschen</button>
             <button type={"button"} onClick={handleEdit}>Bearbeiten</button>

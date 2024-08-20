@@ -37,7 +37,7 @@ public class SmartController {
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{id}")
-    public void deleteEmployeesById(@PathVariable String id) throws InvalidIdException {
+    public void deleteEmployeesById(@PathVariable String id){
         smartService.deleteEmployeesById(id);
     }
 
@@ -60,4 +60,18 @@ public class SmartController {
 
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/hoursPerMonth/{id}")
+    public double getHoursWorkedPerMonthById(@PathVariable String id) throws InvalidIdException {
+        return smartService.getHoursWorkedPerMonthById(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/search")
+    public List<Employees> searchEmployees(@RequestParam("query") String query) {
+        return smartService.searchEmployees((query));
+    }
 }
+
+
+

@@ -5,12 +5,12 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import './styles/EmployeesForm.css'
 import {HomePage} from "./pages/HomePage.tsx";
-import {EmployeesProvider} from "./context/EmployeesContext.tsx";
 
 import AddPage from "./pages/AddPage.tsx";
 import DisplayEmployees from "./pages/DisplayEmployees.tsx";
 import TimeManager from "./pages/TimeManager.tsx";
 import UpdateEmployeesPage from "./pages/UpdateEmployeesPage.tsx";
+import {useEmployeesContext} from "./hooks/useEmployeesContext.ts";
 
 function App() {
 
@@ -20,7 +20,8 @@ function App() {
 
     const [endTime, setEndTime] = useState<string>(" ");
     const [hoursWorked, setHoursWorked] = useState(0.0);
-
+    //const [hoursWorkedPerMonth, setHoursWorkedPerMonth] = useState(0.0);
+    const {hoursWorkedPerMonth,setHoursWorkedPerMonth} = useEmployeesContext();
     function onCheckIn(){
         axios.post(
             "/api/add/" + id
@@ -36,20 +37,18 @@ function App() {
             .then((response) => {
                 setEndTime(response.data.time)
                 setHoursWorked(response.data.hoursWorked)
+                setHoursWorkedPerMonth(response.data.hoursWorkedPerMonth)
                 //console.log(response.data)
             })
             .catch(error => console.error(error.message))
     }
 
-    /*
-     createBrowserRouter wird verwendet, um eine Routing-Konfiguration zu definieren, die festlegt, welche Komponenten unter welchen URL-Pfaden gerendert werden sollen.
-     --path: Der URL-Pfad, bei dem diese Route aktiv wird.
-     --element: Die Komponente, die für diesen Pfad gerendert werden soll.
-     */
+
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<HomePage setId={setId}/>
+            element:<HomePage setId={setId} setStartTime={setStartTime} setEndTime={setEndTime}
+                              setHoursWorkedPerMonth={0} />
         },
         {
             path: "/add/",
@@ -57,21 +56,30 @@ function App() {
         },
         {
             path:"/update-employees/",
-            element:<DisplayEmployees setId={setId}/>
+            element:<DisplayEmployees setId={setId} setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorked}/>
         },
         {
             path:"/timeManager/",
-            element:<TimeManager onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked}/>
+            element:<TimeManager id={id} onCheckOut={onCheckOut} onCheckIn={onCheckIn} startTime={startTime} endTime={endTime} hoursWorked={hoursWorked} setEndTime={setEndTime} setStartTime={setStartTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth} hoursWorkedPerMonth={hoursWorkedPerMonth}/>
         },
         {
             path:"/update/:id",
             element:<UpdateEmployeesPage/>
+        },
+        {
+            path:"/hoursPerMonth/id/",
+            element:<DisplayEmployees setId={setId}  setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
+        },
+        {
+            path:"/{id}/{timeOut}",
+            element:<DisplayEmployees setId={setId}  setStartTime={setStartTime} setEndTime={setEndTime} setHoursWorkedPerMonth={setHoursWorkedPerMonth}/>
         }
     ])
     return (
         <>
 
-            <EmployeesProvider> <RouterProvider router={router}/> </EmployeesProvider>
+            <RouterProvider router={router}/>
+
 
         </>
     )

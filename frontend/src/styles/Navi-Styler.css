@@ -1,39 +1,36 @@
 
-.navi{
+.app{
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-font-size: 20px;
-    gap: 2em;
-    padding: 10px;
-    margin-top: 70px;
-    background-color: ivory;
+    font-size: 20px;
+    text-align: center;
+    background-color: yellow;
+
+
 }
-.navi02{
+#navi02{
+    display: inline-block;
     list-style: none;
-    a:hover {background-color: pink;}
-    a:focus { background-color: aquamarine;}
-    a:focus-visible{background-color: aquamarine;}
-    background-color: antiquewhite;
-}
-.navi01 {
-    box-sizing: border-box;
-    border: 1px solid black;
+    margin-left: 50px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border: 2px solid #646cff;
     border-radius: 10px;
     padding: 12px;
+    justify-content: center;
+
     &:focus-visible, &:active {background-color: aquamarine;}
     &:hover {background-color: pink;}
     &:focus { background-color: aquamarine;}
+    a:focus { background-color: orange;}
+    a:focus-visible{background-color: aquamarine;}
+    background-color: lightyellow;
+
 }
-/*
-.navi01:active {
-    background-color: yellow;
-}
-.navi02:focus {
+#navi02:focus {
     background-color: yellow;
 }
 .navi:focus{
     background-color: yellow;
 }
- */
